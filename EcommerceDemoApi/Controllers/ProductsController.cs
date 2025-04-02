@@ -268,5 +268,17 @@ namespace EcommerceDemoApi.Controllers
 
             return Ok(updatedProduct);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var success = await _productService.DeleteProductAsync(id);
+            if (!success)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
     }
 }

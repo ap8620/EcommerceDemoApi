@@ -12,6 +12,7 @@ public interface IProductService
     Task<Product?> GetProductByIdAsync(int id);
     Task<bool> SeedProductsAsync(List<Product> products);
     Task<Product?> UpdateProductAsync(Product product);
+    Task<bool> DeleteProductAsync(int id);
 }
 
 public class ProductService : IProductService
@@ -63,5 +64,10 @@ public class ProductService : IProductService
         }
         
         return await _productRepository.UpdateAsync(product);
+    }
+
+    public async Task<bool> DeleteProductAsync(int id)
+    {
+        return await _productRepository.DeleteAsync(id);
     }
 }
